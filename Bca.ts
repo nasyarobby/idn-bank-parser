@@ -10,7 +10,9 @@ class Bca implements IdnBankParser {
     url = {
         loginForm: 'https://m.klikbca.com/login.jsp',
         auth: 'https://m.klikbca.com/authentication.do',
-        menu: 'https://m.klikbca.com/authentication.do?value(actions)=menu',
+        mainMenu: 'https://m.klikbca.com/authentication.do?value(actions)=menu',
+        accountInfoMenu: 'https://m.klikbca.com/accountstmt.do?value(actions)=menu',
+        accountStatementForm: 'https://m.klikbca.com/accountstmt.do?value(actions)=acct_stmt',
         logout: 'https://m.klikbca.com/authentication.do?value(actions)=logout',
     };
     userAgent: string = 'Mozilla/5.0 (Android 7.0; Mobile; rv:54.0) Gecko/54.0 Firefox/54.0';
@@ -120,11 +122,11 @@ class Bca implements IdnBankParser {
                     headers: {
                         'User-Agent': this.userAgent,
                         'Cookie': this.getCookie(),
-                        'Referer': this.url.auth,
+                        'Referer': this.url.mainMenu,
                     }
                 }
             )
-                .then((response:AxiosResponse) => {
+                .then((response: AxiosResponse) => {
                     if (/Silakan masukkan USER ID Anda/g.test(response.data)) {
                         res({
                             action: "logout",
@@ -140,6 +142,43 @@ class Bca implements IdnBankParser {
                 })
                 .catch((err: AxiosError) => {
                     rej(err);
+                })
+        })
+    }
+
+    getTransactions() {
+
+    }
+
+    getAccountInfoMenu() {
+        return new Promise((res, rej) => {
+            axios.post(
+                this.url.accountInfoMenu,
+                {},
+                {
+                    headers: {
+                        'User-Agent': this.userAgent,
+                        'Cookie': this.getCookie(),
+                        'Referer': this.url.mainMenu,
+                    }
+                }
+            )
+                .then((response: AxiosResponse) => {
+                    if (/INFORMASI REKENING/g.test(response.data)) {
+                        res({
+                            action: "accessAccountInfo",
+                            success: 1
+                        })
+                    }
+                    else {
+                        res({
+                            action: "accessAccountInfo",
+                            success: 0
+                        })
+                    }
+                })
+                .then((error: AxiosError) => {
+                    rej(error);
                 })
         })
     }

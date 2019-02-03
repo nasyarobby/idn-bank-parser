@@ -1,0 +1,39 @@
+{
+  "name": "idn-bank-parser",
+  "version": "1.0.0",
+  "description": "Parser for Indonesian Online Banking Websites",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "exec": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nasyarobby/idn-bank-parser.git"
+  },
+  "keywords": [
+    "online",
+    "banking",
+    "parser",
+    "indonesia",
+    "indonesian"
+  ],
+  "author": "Nasyarobby N. Putra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nasyarobby/idn-bank-parser/issues"
+  },
+  "homepage": "https://github.com/nasyarobby/idn-bank-parser#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "querystring": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "awesome-typescript-loader": "^5.2.1",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.2.2"
+  }
+}

@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "exec": "node index.js",
+    "buildexec": "npx tsc && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +29,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^6.2.0",
+    "node-html-parser": "^1.1.12",
     "querystring": "^0.2.0"
   },
   "devDependencies": {

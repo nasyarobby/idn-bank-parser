@@ -340,7 +340,7 @@ class Bca implements IdnBankParser {
                 else {
                     trx.transactionDate = trx.bookDate;
                 }
-                trx.notes = details.join("|");
+                trx.notes = details.join("\n");
                 trx.amount = Number.parseFloat(details[details.length - 1].replace(",", ""));
                 trx.entryType = cols[2].innerHTML;
             }

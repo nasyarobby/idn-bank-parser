@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/nasyarobby/idn-bank-parser#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "dotenv": "^6.2.0",
     "node-html-parser": "^1.1.12",
     "querystring": "^0.2.0"
